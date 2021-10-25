@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Libro;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class LibroController extends Controller
 {
@@ -15,9 +16,9 @@ class LibroController extends Controller
     public function index()
     {
         //* We get all the books that are in the libros table from the database, and we pass all that information through compact funtion to view libro-index
-        // $libros = Libro::all();
-        // return view('libro.libro-index', compact('libros'));
-        return view('libro.libro-index');
+        $books = Libro::all();
+        return view('libro.libro-index', compact('books'));
+        // return view('libro.libro-index');
     }
 
     /**
@@ -47,9 +48,10 @@ class LibroController extends Controller
             'pages' => ['required', 'integer', 'min:0'],
             'editorial' => ['required', 'string', 'min:2', 'max:50'],
             'publication' => ['required', 'string'],
+            'code' => ['required', 'string', 'min:2','unique:App\Models\Libro,code'],
         ]);
 
-        //* We create a new book, and we pass all the information that is in the request as a parameter, finally we return to libro.index
+        //* We create a new book, and pass all the information that is in the request as a parameter, finally, we return to libro.index
         Libro::create($request->all());
         return redirect()->route('libro.index');
     }
@@ -62,7 +64,7 @@ class LibroController extends Controller
      */
     public function show(Libro $libro)
     {
-        //
+        return view('libro.libro-show', compact('libro'));
     }
 
     /**
@@ -73,7 +75,7 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        //
+        return view('libro.libro-create', compact('libro'));
     }
 
     /**
@@ -85,7 +87,19 @@ class LibroController extends Controller
      */
     public function update(Request $request, Libro $libro)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'string', 'min:2', 'max:50'],
+            'price' => ['required', 'integer', 'between:0,9999'],
+            'genre' => ['required', 'string', 'min:2', 'max:50'],
+            'pages' => ['required', 'integer', 'min:0'],
+            'editorial' => ['required', 'string', 'min:2', 'max:50'],
+            'publication' => ['required', 'string'],
+            'code' => ['required', 'string', Rule::unique('libros')->ignore($libro->id)],
+        ]);
+
+        Libro::where('id', $libro->id)->update($request->except('_token', '_method'));
+
+        return redirect()->route('libro.show', $libro);
     }
 
     /**
@@ -96,6 +110,7 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        $libro->delete();
+        return redirect()->route('libro.index');
     }
 }

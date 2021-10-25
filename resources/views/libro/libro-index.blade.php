@@ -1,38 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <!-- A table where we show all the books -->
-    <h1>LibreriApp Home Page</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Literary Genre</th>
-                <th>Amount of pages</th>
-                <th>Editorial</th>
-                <th>Publication Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($libros as $libro)
-            <tr>
-                <td>{{ $libro->title }}</td>
-                <td>{{ $libro->price }}$</td>
-                <td>{{ $libro->genre }}</td>
-                <td>{{ $libro->pages }}</td>
-                <td>{{ $libro->editorial }}</td>
-                <td>{{ $libro->publication }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <a href="{{ route('libro.create') }}">Create a Record</a>
-</body>
-</html>
+@extends('layouts.ruang')
+@section('content')
+<!-- A table where we show all the books -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">LibreriApp Home Page (Index)</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/inicio">Home</a></li>
+        <li class="breadcrumb-item">Pages</li>
+        <li class="breadcrumb-item active" aria-current="page">Blank Page</li>
+    </ol>
+</div>
+<a href="{{ route('libro.create') }}" class="btn btn-success btn-icon-split">
+    <span class="icon text-white-50">
+        <i class="fas fa-check"></i>
+    </span>
+    <span class="text">Create a Record</span>
+</a>
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <!-- Simple Tables -->
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Book Records</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Literary Genre</th>
+                            <th>Amount of pages</th>
+                            <th>Editorial</th>
+                            <th>Publication Date</th>
+                            <th>Code</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($books as $book)
+                        <tr>
+                            <td>
+                                <a href="{{ route('libro.show', $book->id) }}" class="btn btn-outline-info mb-1">{{ $book->title }}</a>
+
+                            </td>
+                            <td>{{ $book->price }}$</td>
+                            <td>{{ $book->genre }}</td>
+                            <td>{{ $book->pages }}</td>
+                            <td>{{ $book->editorial }}</td>
+                            <td>{{ $book->publication }}</td>
+                            <td>{{ $book->code }}</td>
+                            <!-- <td><span class="badge badge-success">Delivered</span></td> -->
+                            <td>
+                                <a href="{{ route('libro.edit', $book->id) }}" class="btn btn-warning mb-1">Edit</a>
+
+                                <form action="{{ route('libro.destroy', $book) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger mb-1" type="submit" value="Delete">
+                                    </input>
+                                </form>
+                            </td>
+
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+</div>
+
+@endsection

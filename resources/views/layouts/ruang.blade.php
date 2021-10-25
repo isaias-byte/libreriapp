@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="{{ asset('img/logo/logo.png') }}" rel="icon">
-    <title>Home Page</title>
+    <title>Libreriapp</title>
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/ruang-admin.min.css') }}" rel="stylesheet">
@@ -27,11 +27,11 @@
 
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    
+                        <!-- Content -->
                         @yield('content')
-                    </div>
-
-                    <!-- Content -->
+                        
+                    
                     
                     <!-- Modal Logout -->
                     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
@@ -53,9 +53,10 @@
                             </div>
                         </div>
                     </div>
-
+                   
                 </div>
                 <!---Container Fluid-->
+                
             </div>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">

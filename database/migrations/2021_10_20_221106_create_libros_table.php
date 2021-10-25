@@ -21,6 +21,7 @@ class CreateLibrosTable extends Migration
             $table->string('pages');
             $table->string('editorial');
             $table->string('publication');
+            $table->string('code');
             $table->timestamps();
         });
     }
