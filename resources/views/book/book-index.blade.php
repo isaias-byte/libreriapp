@@ -10,7 +10,7 @@
         <li class="breadcrumb-item active" aria-current="page">Blank Page</li>
     </ol>
 </div>
-<a href="{{ route('libro.create') }}" class="btn btn-success btn-icon-split">
+<a href="{{ route('book.create') }}" class="btn btn-success btn-icon-split">
     <span class="icon text-white-50">
         <i class="fas fa-check"></i>
     </span>
@@ -42,7 +42,7 @@
                         @foreach ($books as $book)
                         <tr>
                             <td>
-                                <a href="{{ route('libro.show', $book->id) }}" class="btn btn-outline-info mb-1">{{ $book->title }}</a>
+                                <a href="{{ route('book.show', $book->id) }}" class="btn btn-outline-info mb-1">{{ $book->title }}</a>
 
                             </td>
                             <td>{{ $book->price }}$</td>
@@ -53,9 +53,9 @@
                             <td>{{ $book->code }}</td>
                             <!-- <td><span class="badge badge-success">Delivered</span></td> -->
                             <td>
-                                <a href="{{ route('libro.edit', $book->id) }}" class="btn btn-warning mb-1">Edit</a>
+                                <a href="{{ route('book.edit', $book->id) }}" class="btn btn-warning mb-1">Edit</a>
 
-                                <form action="{{ route('libro.destroy', $book) }}" method="POST">
+                                <form action="{{ route('book.destroy', $book) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input class="btn btn-danger mb-1" type="submit" value="Delete">

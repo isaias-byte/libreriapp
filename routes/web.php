@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LibroController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +26,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('libro', LibroController::class);
+Route::resource('book', BookController::class);
