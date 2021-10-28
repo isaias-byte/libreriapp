@@ -3,19 +3,21 @@
 <!-- A table where we show all the books -->
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">LibreriApp Home Page (Index)</h1>
+    <h1 class="h3 mb-0 text-gray-800">LibreriApp Home Page</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/inicio">Home</a></li>
         <li class="breadcrumb-item">Pages</li>
         <li class="breadcrumb-item active" aria-current="page">Blank Page</li>
     </ol>
 </div>
-<a href="{{ route('book.create') }}" class="btn btn-success btn-icon-split">
-    <span class="icon text-white-50">
-        <i class="fas fa-check"></i>
-    </span>
-    <span class="text">Create a Record</span>
-</a>
+<div class="mb-4">
+    <a href="{{ route('book.create') }}" class="btn btn-success btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-check"></i>
+        </span>
+        <span class="text">Create a Record</span>
+    </a>
+</div>
 <div class="row">
     <div class="col-lg-12 mb-4">
         <!-- Simple Tables -->

@@ -11,6 +11,15 @@
     <title>Libreriapp</title>
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Select2 -->
+    <link href="{{ asset('vendor/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Bootstrap DatePicker -->  
+    <link href="{{ asset('vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" >
+    <!-- Bootstrap Touchspin -->
+    <link href="{{ asset('vendor/bootstrap-touchspin/css/jquery.bootstrap-touchspin.css') }}" rel="stylesheet" >
+    <!-- ClockPicker -->
+    <link href="{{ asset('vendor/clock-picker/clockpicker.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/ruang-admin.min.css') }}" rel="stylesheet">
 </head>
 
@@ -52,8 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                   
+                    </div>                   
                 </div>
                 <!---Container Fluid-->
                 
@@ -82,8 +90,16 @@
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('vendor/select2/dist/js/select2.min.js') }}"></script>
+    <!-- Bootstrap Datepicker -->
+    <script src="{{ asset('vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <!-- Bootstrap Touchspin -->
+    <script src="{{ asset('vendor/bootstrap-touchspin/js/jquery.bootstrap-touchspin.js') }}"></script>
+    <!-- ClockPicker -->
+    <script src="{{ asset('vendor/clock-picker/clockpicker.js') }}"></script>
     <script src="{{ asset('js/ruang-admin.min.js') }}"></script>
-
+    <script src="{{ asset('js/date-picker.js') }}"></script>
 </body>
 
 </html>
